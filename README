@@ -1,0 +1,10 @@
+
+SunSignal is a light reactive soundscape generator created with ChucK & Arduino
+
+contents:
+*Sketch for an Arduino board to measure light via a photoresistor
+*ChucK script that produces sound based from the Arduino sensor data
+
+TODO
+1/Fritzing diagram
+2/GUI code
