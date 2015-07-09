@@ -10,6 +10,14 @@ SinOsc piano2 => NRev rvrb2 => ResonZ rez2 => LPF low2 => dac;
 [50, Math.random2(2, 60),57,Math.random2(2, 60),50] @=> int A[];
 [55, Math.random2(2, 100),62,Math.random2(2, 40),50] @=> int b[];
 
+  Shakers shak => ResonZ rez3 => dac;
+        //22 => shak.preset;
+       // 0.7 => master.gain;
+
+
+
+
+
 0.09::second => dur h;
 Math.random2f(0.01, 0.9)::second => dur q;
 [q,q,q,h,q,q,h,q] @=> dur myDurs[];
@@ -78,7 +86,7 @@ while(true)
         chout <= ints[i] <= " ";
   
         [ints[0], ints[1], ints[2], ints[3]] @=> int A[];
-        for( 0 => int b; b < A.cap(); b++) // if i is less than the max No of A[]
+        for( 0 => int b; b < A.cap(); b++) 
     
 {
        
@@ -86,8 +94,24 @@ while(true)
     50 => low.freq;
     0.4 => piano.gain;
     
-    */
 0.01::ms => now;
+    /////////////////////////////////////shakers
+           if( (A[b])> 250 )
+                    {
+                        
+                  for( 0 => int i; i < (A[b]/70); i++)
+{      
+                        
+                    i    => shak.preset;
+          i => shak.objects;
+            Math.random2f(0.0, 1.0) => shak.decay;
+            (A[b]) => shak.energy;   
+
+                    } 
+    
+    
+    
+                }
     }
 }
     chout <= IO.newline();
